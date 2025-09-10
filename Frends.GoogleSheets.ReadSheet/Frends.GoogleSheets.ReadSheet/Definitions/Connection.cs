@@ -1,0 +1,18 @@
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+
+namespace Frends.GoogleSheets.ReadSheet.Definitions;
+
+// TODO: Remove this class if the task does not make connections
+
+/// <summary>
+/// Connection parameters.
+/// </summary>
+public class Connection
+{
+    /// <summary>
+    /// JSON string containing service account credentials.
+    /// </summary>
+    [PasswordPropertyText]
+    public string ServiceAccountJson { get; set; }
+}

@@ -1,0 +1,39 @@
+﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
+using Frends.GoogleSheets.ReadSheet.Definitions;
+using NUnit.Framework;
+
+namespace Frends.GoogleSheets.ReadSheet.Tests;
+
+[TestFixture]
+public class IntegrationTests
+{
+    [Test]
+    public async Task CreateSheet_ReturnsFailure_WhenInvalidJson_AndThrowFalse()
+    {
+        var saJson =
+            "";
+        var spreadsheetId = "1jALEcdhPEwDsVMOFJWmJn3rP33v9MN9JyMMf34Ehtdw";//Environment.GetEnvironmentVariable("GOOGLE_SHEET_ID");
+
+        var input = new Input
+        {
+            SpreadsheetId = spreadsheetId,
+            Range = "A1:B2",
+        };
+
+        var connection = new Connection
+        {
+            ServiceAccountJson = saJson,
+        };
+
+        var result = GoogleSheets.ReadSheet(input, connection, new Options(), CancellationToken.None);
+
+        Assert.That(result.Success, Is.True, result.Error?.Message);
+        Assert.That(result.Range, Is.EqualTo("sheet1!A1:B2"));
+        Assert.That(result.MajorDimension, Is.EqualTo("ROWS"));
+        Assert.That(result.ETag, Is.Not.Empty);
+        Assert.That(result.Data, Is.Not.Null);
+        Assert.That(result.Data.Type, Is.EqualTo(Newtonsoft.Json.Linq.JTokenType.Array));
+    }
+}
