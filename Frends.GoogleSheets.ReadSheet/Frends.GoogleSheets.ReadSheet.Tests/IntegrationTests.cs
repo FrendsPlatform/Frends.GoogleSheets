@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using dotenv.net;
 using Frends.GoogleSheets.ReadSheet.Definitions;
 using NUnit.Framework;
 
@@ -9,12 +11,21 @@ namespace Frends.GoogleSheets.ReadSheet.Tests;
 [TestFixture]
 public class IntegrationTests
 {
-    [Test]
-    public async Task CreateSheet_ReturnsFailure_WhenInvalidJson_AndThrowFalse()
+    [SetUpFixture]
+    public class TestSetup
     {
-        var saJson =
-            "";
-        var spreadsheetId = "1jALEcdhPEwDsVMOFJWmJn3rP33v9MN9JyMMf34Ehtdw";//Environment.GetEnvironmentVariable("GOOGLE_SHEET_ID");
+        [OneTimeSetUp]
+        public void GlobalSetup()
+        {
+            DotEnv.Fluent().WithEnvFiles(".env", ".env.development").Load();
+        }
+    }
+
+    [Test]
+    public async Task ReadSheet_ReadsCorrectData()
+    {
+        var saJson = Encoding.UTF8.GetString(Convert.FromBase64String(Environment.GetEnvironmentVariable("GOOGLE_SERVICE_ACCOUNT_JSON_BASE64")));
+        var spreadsheetId = Environment.GetEnvironmentVariable("GOOGLE_SHEET_ID");
 
         var input = new Input
         {
@@ -30,7 +41,7 @@ public class IntegrationTests
         var result = GoogleSheets.ReadSheet(input, connection, new Options(), CancellationToken.None);
 
         Assert.That(result.Success, Is.True, result.Error?.Message);
-        Assert.That(result.Range, Is.EqualTo("sheet1!A1:B2"));
+        Assert.That(result.Range, Is.EqualTo("Sheet1!A1:B2"));
         Assert.That(result.MajorDimension, Is.EqualTo("ROWS"));
         Assert.That(result.ETag, Is.Not.Empty);
         Assert.That(result.Data, Is.Not.Null);

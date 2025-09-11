@@ -8,13 +8,12 @@ public class Error
     /// <summary>
     /// Summary of the error.
     /// </summary>
-    /// <example>Unable to join strings.</example>
+    /// <example>Unable to access Google Sheets.</example>
     public string Message { get; set; }
 
     /// <summary>
-    /// Additional information about the error.
+    /// Additional information about the error, if any.
     /// </summary>
     /// <example>object { Exception Exception }</example>
-    // TODO: Add task specific additional information. Strong typing is recommended when reasonable.
     public dynamic AdditionalInfo { get; set; }
 }
