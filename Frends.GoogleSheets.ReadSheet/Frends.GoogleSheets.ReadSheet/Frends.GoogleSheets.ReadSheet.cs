@@ -89,7 +89,7 @@ public static class GoogleSheets
         }
     }
 
-    private static JToken ListToJToken(IList<IList<object>> list, CancellationToken cancellationToken)
+    private static JArray ListToJToken(IList<IList<object>> list, CancellationToken cancellationToken)
     {
         var array = new JArray();
         foreach (var row in list)
