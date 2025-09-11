@@ -8,7 +8,6 @@ using Google.Apis.Auth.OAuth2;
 using Google.Apis.Services;
 using Google.Apis.Sheets.v4;
 using Google.Apis.Sheets.v4.Data;
-using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 
 namespace Frends.GoogleSheets.CreateSheet.Tests;
@@ -16,8 +15,8 @@ namespace Frends.GoogleSheets.CreateSheet.Tests;
 [TestFixture]
 public class IntegrationTests
 {
-    private string _serviceAccountJson = Encoding.UTF8.GetString(Convert.FromBase64String(Environment.GetEnvironmentVariable("GOOGLE_SERVICE_ACCOUNT_JSON_BASE64")));
-    private string _spreadsheetId = Environment.GetEnvironmentVariable("GOOGLE_SHEET_ID");
+    private readonly string serviceAccountJson = Encoding.UTF8.GetString(Convert.FromBase64String(Environment.GetEnvironmentVariable("GOOGLE_SERVICE_ACCOUNT_JSON_BASE64")));
+    private readonly string spreadsheetId = Environment.GetEnvironmentVariable("GOOGLE_SHEET_ID");
 
     [Test]
     public void CreateSheet_ThrowsException_WhenThrowErrorOnFailureIsTrue()
@@ -49,8 +48,8 @@ public class IntegrationTests
     [Test]
     public async Task CreateSheet_CreatesNewSheet()
     {
-        var input = new Input { SpreadsheetId = _spreadsheetId, NewSheetName = $"NewSheet {Guid.NewGuid()}" };
-        var connection = new Connection { ServiceAccountJson = _serviceAccountJson };
+        var input = new Input { SpreadsheetId = spreadsheetId, NewSheetName = $"NewSheet {Guid.NewGuid()}" };
+        var connection = new Connection { ServiceAccountJson = serviceAccountJson };
         var options = new Options { ThrowErrorOnFailure = false, ErrorMessageOnFailure = "Custom error" };
         var cancellationToken = CancellationToken.None;
 
@@ -61,12 +60,12 @@ public class IntegrationTests
         Assert.That(result.NewSheetId, Is.GreaterThan(0));
         Assert.That(result.ETag, Is.Not.Empty);
 
-        DeleteSheet(_spreadsheetId, result.NewSheetId);
+        DeleteSheet(spreadsheetId, result.NewSheetId);
     }
 
     private void DeleteSheet(string spreadsheetId, int sheetId)
     {
-        var saJson = _serviceAccountJson;
+        var saJson = serviceAccountJson;
         var credential = GoogleCredential.FromJson(saJson).CreateScoped(SheetsService.Scope.Spreadsheets);
         var service = new SheetsService(new BaseClientService.Initializer
         {
