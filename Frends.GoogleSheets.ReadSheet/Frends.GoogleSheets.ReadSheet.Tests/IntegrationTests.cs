@@ -15,7 +15,6 @@ public class IntegrationTests
     {
         var saJson = Encoding.UTF8.GetString(Convert.FromBase64String(Environment.GetEnvironmentVariable("GOOGLE_SERVICE_ACCOUNT_JSON_BASE64")));
         var spreadsheetId = Environment.GetEnvironmentVariable("GOOGLE_SHEET_ID");
-
         var input = new Input
         {
             SpreadsheetId = spreadsheetId,
