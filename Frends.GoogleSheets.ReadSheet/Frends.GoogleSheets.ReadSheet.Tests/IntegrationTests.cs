@@ -2,7 +2,6 @@
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using dotenv.net;
 using Frends.GoogleSheets.ReadSheet.Definitions;
 using NUnit.Framework;
 
@@ -11,18 +10,8 @@ namespace Frends.GoogleSheets.ReadSheet.Tests;
 [TestFixture]
 public class IntegrationTests
 {
-    [SetUpFixture]
-    public class TestSetup
-    {
-        [OneTimeSetUp]
-        public void GlobalSetup()
-        {
-            DotEnv.Fluent().WithEnvFiles(".env", ".env.development").Load();
-        }
-    }
-
     [Test]
-    public async Task ReadSheet_ReadsCorrectData()
+    public void ReadSheet_ReadsCorrectData()
     {
         var saJson = Encoding.UTF8.GetString(Convert.FromBase64String(Environment.GetEnvironmentVariable("GOOGLE_SERVICE_ACCOUNT_JSON_BASE64")));
         var spreadsheetId = Environment.GetEnvironmentVariable("GOOGLE_SHEET_ID");

@@ -19,13 +19,13 @@ public class UnitTests
             new List<object> { "A2", "B2" },
         };
         var token = typeof(GoogleSheets)
-            .GetMethod("ListToJToken", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static) !
-            .Invoke(null, [list, CancellationToken.None]) as JArray;
+            .GetMethod("ListToJToken", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static)
+            !.Invoke(null, [list, CancellationToken.None]) as JArray;
 
         Assert.That(token, Is.Not.Null);
         Assert.That(token.Count, Is.EqualTo(2));
-        Assert.That(token[0][0] !.ToString(), Is.EqualTo("A1"));
-        Assert.That(token[1][1] !.ToString(), Is.EqualTo("B2"));
+        Assert.That(token[0][0]?.ToString(), Is.EqualTo("A1"));
+        Assert.That(token[1][1]?.ToString(), Is.EqualTo("B2"));
     }
 
     [Test]
