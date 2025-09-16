@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Threading;
 using Frends.GoogleSheets.ReadSheet.Definitions;
 using Google.Apis.Auth.OAuth2;
@@ -25,7 +24,7 @@ public static class GoogleSheets
     /// <param name="connection">Connection parameters.</param>
     /// <param name="options">Additional parameters.</param>
     /// <param name="cancellationToken">A cancellation token provided by Frends Platform.</param>
-    /// <returns>object { bool Success, dynamic (JArray) Data, string Range, string MajorDimension, string ETag, object Error { string Message, dynamic AdditionalInfo } }</returns>
+    /// <returns>object { bool Success, dynamic (JArray) Data, string Range, string MajorDimension, string ETag, object Error { string Message, Exception AdditionalInfo } }</returns>
     public static Result ReadSheet(
         [PropertyTab] Input input,
         [PropertyTab] Connection connection,
@@ -40,7 +39,7 @@ public static class GoogleSheets
             var service = new SheetsService(new BaseClientService.Initializer
             {
                 HttpClientInitializer = credential,
-                ApplicationName = "Frends.GoogleSheets.CreateSheet",
+                ApplicationName = "Frends.GoogleSheets.ReadSheet",
             });
 
             SpreadsheetsResource.ValuesResource.GetRequest request =
@@ -80,10 +79,7 @@ public static class GoogleSheets
                 Error = new Error
                 {
                     Message = errorMessage,
-                    AdditionalInfo = new
-                    {
-                        Exception = e,
-                    },
+                    AdditionalInfo = e,
                 },
             };
         }

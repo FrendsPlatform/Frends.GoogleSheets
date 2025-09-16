@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using Frends.GoogleSheets.ReadSheet.Definitions;
+using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 
 namespace Frends.GoogleSheets.ReadSheet.Tests;
@@ -33,6 +33,6 @@ public class IntegrationTests
         Assert.That(result.MajorDimension, Is.EqualTo("ROWS"));
         Assert.That(result.ETag, Is.Not.Empty);
         Assert.That(result.Data, Is.Not.Null);
-        Assert.That(result.Data.Type, Is.EqualTo(Newtonsoft.Json.Linq.JTokenType.Array));
+        Assert.That(result.Data.Type, Is.EqualTo(JTokenType.Array));
     }
 }
