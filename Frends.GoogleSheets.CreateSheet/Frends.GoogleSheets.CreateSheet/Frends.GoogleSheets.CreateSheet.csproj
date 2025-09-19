@@ -11,7 +11,7 @@
         <PackageTags>Frends</PackageTags>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
-        <Description>Description of the Task</Description>
+        <Description>Frends task for creating new sheets in Google Sheets.</Description>
         <PackageProjectUrl>https://frends.com/</PackageProjectUrl>
         <RepositoryUrl>https://github.com/FrendsPlatform/Frends.GoogleSheets/tree/main/Frends.GoogleSheets.CreateSheet</RepositoryUrl>
     </PropertyGroup>
@@ -35,6 +35,7 @@
         <None Include="FrendsTaskMetadata.json" Pack="true" PackagePath="/">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
+        <None Include="../CHANGELOG.md" Pack="true" PackagePath="/" />
     </ItemGroup>
 
 </Project>

@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Frends.GoogleSheets.CreateSheet.Definitions;
@@ -9,7 +7,6 @@ using Google.Apis.Auth.OAuth2;
 using Google.Apis.Services;
 using Google.Apis.Sheets.v4;
 using Google.Apis.Sheets.v4.Data;
-using Newtonsoft.Json.Linq;
 
 namespace Frends.GoogleSheets.CreateSheet;
 
@@ -19,14 +16,14 @@ namespace Frends.GoogleSheets.CreateSheet;
 public static class GoogleSheets
 {
     /// <summary>
-    /// Reads data from a specified range in a Google Sheets spCreateSheet.
+    /// Creates a new sheet in a specified Google Sheets spreadsheet.
     /// [Documentation](https://tasks.frends.com/tasks/frends-tasks/Frends-GoogleSheets-CreateSheet)
     /// </summary>
     /// <param name="input">Essential parameters.</param>
     /// <param name="connection">Connection parameters.</param>
     /// <param name="options">Additional parameters.</param>
     /// <param name="cancellationToken">A cancellation token provided by Frends Platform.</param>
-    /// <returns>object { bool Success, string NewSheetId, string ETag, object Error { string Message, dynamic AdditionalInfo } }</returns>
+    /// <returns>object { bool Success, int NewSheetId, string ETag, object Error { string Message, Exception AdditionalInfo } }</returns>
     public static async Task<Result> CreateSheet(
         [PropertyTab] Input input,
         [PropertyTab] Connection connection,
@@ -89,10 +86,7 @@ public static class GoogleSheets
                 Error = new Error
                 {
                     Message = errorMessage,
-                    AdditionalInfo = new
-                    {
-                        Exception = e,
-                    },
+                    AdditionalInfo = e,
                 },
             };
         }

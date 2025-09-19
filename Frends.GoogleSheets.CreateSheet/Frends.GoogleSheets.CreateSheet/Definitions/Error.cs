@@ -1,3 +1,5 @@
+using System;
+
 namespace Frends.GoogleSheets.CreateSheet.Definitions;
 
 /// <summary>
@@ -14,6 +16,6 @@ public class Error
     /// <summary>
     /// Additional information about the error, if any.
     /// </summary>
-    /// <example>object { Exception Exception }</example>
-    public dynamic AdditionalInfo { get; set; }
+    /// <example>Exception object</example>
+    public Exception AdditionalInfo { get; set; }
 }

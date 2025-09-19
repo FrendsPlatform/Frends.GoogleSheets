@@ -1,6 +1,6 @@
 # Frends.GoogleSheets.CreateSheet
 
-Description of what the Task will do.
+Frends task for creating new sheets in Google Sheets.
 
 [![CreateSheet_build](https://github.com/FrendsPlatform/Frends.GoogleSheets/actions/workflows/CreateSheet_build_and_test_on_main.yml/badge.svg)](https://github.com/FrendsPlatform/Frends.GoogleSheets/actions/workflows/CreateSheet_build_and_test_on_main.yml)
 ![Coverage](https://app-github-custom-badges.azurewebsites.net/Badge?key=FrendsPlatform/Frends.GoogleSheets/Frends.GoogleSheets.CreateSheet|main)
