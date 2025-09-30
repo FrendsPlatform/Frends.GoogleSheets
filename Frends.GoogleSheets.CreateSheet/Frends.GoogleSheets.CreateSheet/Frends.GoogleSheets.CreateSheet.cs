@@ -63,7 +63,7 @@ public static class GoogleSheets
             {
                 Success = true,
                 NewSheetId = sheet.SheetId ?? 0,
-                ETag = sheet.ETag,
+                ETag = response.ETag,
             };
         }
         catch (Exception e) when (e is not OperationCanceledException)
