@@ -8,7 +8,7 @@ Frends task for writing data to Google Sheets.
 
 ## Installing
 
-You can install the Task via frends UI Task View.
+You can install the Task via Frends UI Task View.
 
 ## Building
 
