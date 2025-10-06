@@ -32,11 +32,12 @@ public class Result
     /// <summary>
     /// ETag of the response.
     /// </summary>
+    /// <example>abc123etag</example>
     public string ETag { get; set; }
 
     /// <summary>
     /// Error that occurred during task execution.
     /// </summary>
-    /// <example>object { string Message, object { Exception Exception } AdditionalInfo }</example>
+    /// <example>object { string Message, Exception AdditionalInfo }</example>
     public Error Error { get; set; }
 }
