@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Frends.GoogleSheets.WriteData.Definitions;
@@ -10,7 +9,6 @@ using Google.Apis.Services;
 using Google.Apis.Sheets.v4;
 using Google.Apis.Sheets.v4.Data;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace Frends.GoogleSheets.WriteData;
 

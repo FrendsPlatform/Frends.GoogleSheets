@@ -10,6 +10,7 @@ internal static class EnumExtensions
     /// <summary>
     /// Google API enum conversion
     /// </summary>
+    /// <param name="mode">Mode to map to Google API enum</param>
     /// <returns>Google API enum value</returns>
     internal static SpreadsheetsResource.ValuesResource.AppendRequest.InsertDataOptionEnum ToGoogleApiAppendValue(this InsertDataModes mode)
     {
@@ -24,6 +25,7 @@ internal static class EnumExtensions
     /// <summary>
     /// Google API enum conversion
     /// </summary>
+    /// <param name="mode">Mode to map to Google API enum</param>
     /// <returns>Google API enum value</returns>
     internal static SpreadsheetsResource.ValuesResource.AppendRequest.ValueInputOptionEnum ToGoogleApiAppendValue(this ValueInputModes mode)
     {
@@ -38,6 +40,7 @@ internal static class EnumExtensions
     /// <summary>
     /// Google API enum conversion
     /// </summary>
+    /// <param name="mode">Mode to map to Google API enum</param>
     /// <returns>Google API enum value</returns>
     internal static SpreadsheetsResource.ValuesResource.UpdateRequest.ValueInputOptionEnum ToGoogleApiUpdateValue(this ValueInputModes mode)
     {
