@@ -15,9 +15,9 @@ public class Input
     public string SpreadsheetId { get; set; }
 
     /// <summary>
-    /// The starting cell to write data to, in A1 notation.
+    /// The A1 notation of the starting cell where data will be written.
     /// </summary>
-    /// <example>Sheet1!A1:C10</example>
+    /// <example>Sheet1!A1</example>
     [DefaultValue("Sheet1!A1")]
     public string StartingCell { get; set; }
 

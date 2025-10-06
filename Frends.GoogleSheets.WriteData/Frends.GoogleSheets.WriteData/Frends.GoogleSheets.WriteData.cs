@@ -20,7 +20,7 @@ namespace Frends.GoogleSheets.WriteData;
 public static class GoogleSheets
 {
     /// <summary>
-    /// Writes data to a specified range in a Google Sheets spreadsheet.
+    /// Writes data to a Google Sheets document. Can append or overwrite data in the specified range.
     /// [Documentation](https://tasks.frends.com/tasks/frends-tasks/Frends-GoogleSheets-WriteData)
     /// </summary>
     /// <param name="input">Essential parameters.</param>
