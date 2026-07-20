@@ -20,6 +20,7 @@ public class Result
     /// <summary>
     /// ETag of the response.
     /// </summary>
+    /// <example>W/"abc123"</example>
     public string ETag { get; set; }
 
     /// <summary>
